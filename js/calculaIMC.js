@@ -1,4 +1,4 @@
-const pacientes = document.querySelectorAll('.paciente')
+var pacientes = document.querySelectorAll('.paciente')
 pacientes.forEach(paciente=> {
     let colunaPeso = paciente.querySelector('.info-peso') 
     let colunaAltura = paciente.querySelector('.info-altura')
