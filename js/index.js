@@ -10,10 +10,10 @@ pacientes.forEach(paciente=> {
     
     if ( peso < 0 || peso >= 1000 ) {
         colunaIMC.textContent = 'Peso inválido!'
-        paciente.style.backgroundColor = 'lightcoral'
+        paciente.classList.add('paciente-dados-invalidos')
     } else if ( altura < 0 || altura >= 5 ) {
         colunaIMC.textContent = "Altura inválida"
-        paciente.style.backgroundColor = 'lightcoral'
+        paciente.classList.add('paciente-dados-invalidos')
     } else {
         let imc = peso / (altura*altura)
         colunaIMC.textContent = imc.toFixed(2)
