@@ -34,7 +34,7 @@ function geraPacienteCom(dados) {
 
 function geraLinhaTabelaCom(paciente) {
     const novaTr = `
-    <tr>
+    <tr class="paciente">
         <td class="info-nome" >${paciente.nome}</td>
         <td class="info-peso" >${paciente.peso}</td>
         <td class="info-altura" >${paciente.altura}</td>
