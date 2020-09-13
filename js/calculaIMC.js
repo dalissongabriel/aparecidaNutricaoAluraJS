@@ -7,10 +7,10 @@ pacientes.forEach(paciente=> {
     let peso = colunaPeso.textContent;
     let altura = colunaAltura.textContent;
     
-    if ( peso < 0 || peso >= 1000 ) {
+    if ( pesoEhInvalido(peso) ) {
         colunaIMC.textContent = 'Peso inválido!'
         paciente.classList.add('paciente-dados-invalidos')
-    } else if ( altura < 0 || altura >= 5 ) {
+    } else if ( alturaEhInvalida(altura)) {
         colunaIMC.textContent = "Altura inválida"
         paciente.classList.add('paciente-dados-invalidos')
     } else {
@@ -23,3 +23,16 @@ function calculaOImc(peso, altura) {
     return imc.toFixed(2)
 }
  
+function pesoEhInvalido(peso){
+    if ( peso < 0 || peso >= 1000 ) {
+        return true
+    } 
+    return false
+}
+
+function alturaEhInvalida(altura){
+    if ( altura < 0 || altura >= 5 ) {
+        return true
+    } 
+    return false
+}
