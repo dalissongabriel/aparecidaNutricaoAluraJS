@@ -1,12 +1,24 @@
 const botaoAdicionar = document.querySelector('#adicionar-paciente')
-botaoAdicionar.addEventListener('click',(ev)=>{
+botaoAdicionar.addEventListener('click', (ev) => {
     ev.preventDefault()
     const form = document.querySelector('#form-adicionar')
+
     const paciente = geraPacienteCom(form)
-    const novaLinha=geraLinhaTabelaCom(paciente)
+    // Válida todos os campos e monta um array dos possíveis erros
+    const erros = validaPaciente(paciente)
+    if (erros.length > 0) {
+        exibeMensagensDeErro(erros);
+        return;
+    }
+
+    const novaLinha = geraLinhaTabelaCom(paciente)
     const tabela = document.querySelector('.tabela-dados-pacientes')
-    tabela.insertAdjacentHTML("beforeend",novaLinha)
+    tabela.insertAdjacentHTML("beforeend", novaLinha)
+
+    // LIMPANDO A TELA APÓS O "SUBMIT"
     form.reset()
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    mensagensErro.innerHTML = "";
 })
 
 function geraPacienteCom(dados) {
@@ -15,12 +27,12 @@ function geraPacienteCom(dados) {
         peso: dados.peso.value,
         altura: dados.altura.value,
         gordura: dados.gordura.value,
-        imc: calculaOImc(dados.peso.value,dados.altura.value)
+        imc: calculaOImc(dados.peso.value, dados.altura.value)
     }
     return paciente
 }
 
-function geraLinhaTabelaCom(paciente){
+function geraLinhaTabelaCom(paciente) {
     const novaTr = `
     <tr>
         <td class="info-nome" >${paciente.nome}</td>
@@ -31,4 +43,43 @@ function geraLinhaTabelaCom(paciente){
     </tr>
     `
     return novaTr
+}
+
+function validaPaciente(paciente) {
+    let erros = [];
+
+    if (paciente.nome.length == 0) {
+        erros.push("O nome não pode ser em branco");
+    }
+
+    if (paciente.gordura.length == 0) {
+        erros.push("A gordura não pode ser em branco");
+    }
+
+    if (paciente.peso.length == 0) {
+        erros.push("O peso não pode ser em branco");
+    }
+
+    if (paciente.altura.length == 0) {
+        erros.push("A altura não pode ser em branco");
+    }
+
+    if (pesoEhInvalido(paciente.peso)) {
+        erros.push("Peso é inválido");
+    }
+
+    if (alturaEhInvalida(paciente.altura)) {
+        erros.push("Altura é inválida");
+    }
+
+    return erros;
+}
+
+function exibeMensagensDeErro(erros) {
+    const ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = "";
+
+    erros.forEach(function (erro) {
+        ul.insertAdjacentHTML("beforeend", `<li>${erro}</li>`)
+    });
 }
