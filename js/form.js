@@ -12,7 +12,7 @@ botaoAdicionar.addEventListener('click', (ev) => {
     }
 
     const novaLinha = geraLinhaTabelaCom(paciente)
-    const tabela = document.querySelector('.tabela-dados-pacientes')
+    const tabela = document.querySelector('#tabela-pacientes')
     tabela.insertAdjacentHTML("beforeend", novaLinha)
 
     // LIMPANDO A TELA APÓS O "SUBMIT"
