@@ -1,8 +1,7 @@
 const botaoAdicionar = document.querySelector('#adicionar-paciente')
 botaoAdicionar.addEventListener('click', (ev) => {
     ev.preventDefault()
-    const form = document.querySelector('#form-adicionar')
-
+    var form = document.querySelector('#form-adicionar')
     const paciente = geraPacienteCom(form)
     // Válida todos os campos e monta um array dos possíveis erros
     const erros = validaPaciente(paciente)
@@ -11,6 +10,12 @@ botaoAdicionar.addEventListener('click', (ev) => {
         return;
     }
 
+    inserePacientesNaTabela(paciente)
+
+})
+
+function inserePacientesNaTabela(paciente) {
+    var form = document.querySelector('#form-adicionar')
     const novaLinha = geraLinhaTabelaCom(paciente)
     const tabela = document.querySelector('#tabela-pacientes')
     tabela.insertAdjacentHTML("beforeend", novaLinha)
@@ -19,7 +24,7 @@ botaoAdicionar.addEventListener('click', (ev) => {
     form.reset()
     var mensagensErro = document.querySelector("#mensagens-erro");
     mensagensErro.innerHTML = "";
-})
+}
 
 function geraPacienteCom(dados) {
     const paciente = {
