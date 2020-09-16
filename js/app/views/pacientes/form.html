@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aparecida Nutri - Pacientes</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="../../../../public/index.html"><h1>Aparecida Nutrição</h1></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active" href="../js/app/views/pacientes/index.html">Pacientes <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../js/app/views/evolucoes/">Evoluções</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../js/app/views/medicoes/">Medições</a>
+					</li>
+				</ul>
+			</div>
+        </nav>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../../../../public/index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="./index.html">Pacientes</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Inserir novo paciente</li>
+            </ol>
+        </nav>          
+    </header>
+    <main class="mb-5">
+        <section class="container mt-5">
+            <form>
+                <div class="form-group">
+                  <label for="nome">Nome Completo</label>
+                  <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite seu nome completo ...">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail para contato</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailAjuda" placeholder="Digite seu e-mail">
+                    <small id="emailAjuda" class="form-text text-muted">Exemplo de formato: meuemail@gmail.com.br</small>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone para contato</label>
+                    <input type="tel" name="telefone" pattern="[0-9]{1} [0-9]{4}-[0-9]{4}" class="form-control" id="telefone" aria-describedby="telefoneAjuda" placeholder="Digite seu telefone">
+                    <small id="telefoneAjuda" class="form-text text-muted">Exemplo de formato: 9 9999-9999</small>
+                </div>
+                <div class="form-group">
+                    <label class="radio-inline" for="sexo_masculino">
+                        <input type="radio" name="sexo" id="sexo_masculino" value="masculino" />
+                        Masculino
+                    </label>
+                    <label class="radio-inline" for="sexo_feminino">
+                        <input type="radio" name="sexo" id="sexo_feminino" value="feminino" />
+                        Feminino
+                    </label>    
+                </div>
+                <div class="form-group">
+                  <label for="data_nascimento">Data de nascimento</label>
+                  <input type="date" class="form-control" name="data_nascimento" id="data_nascimento">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Concluir Cadastro</button>
+            </form>
+        </section>
+
+    </main>
+</body>
+</html>
